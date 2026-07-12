@@ -10,7 +10,7 @@ targets:
 ## Componentes
 
 - **Frontend (*Dashboard*):** Interface *web* para analistas inserirem comentários e visualizarem resultados.
-- **API REST:** Expõe o agente de moderação via HTTP.
+- **API REST:** Expõe o agente de moderação via HTTP (FastAPI + Pydantic).
 - **Agente Classificador:** Módulo de IA agnóstico que utiliza os padrões de projeto Estratégia e Fábrica para se comunicar com múltiplos provedores de LLM (Ollama, Gemini, OpenAI) configurados via `.env`.
 - **Base de Conhecimento:** *Dataset* HateBRXplain para exemplos de casos de borda e *prompt* estruturado do agente.
 - **Logs e Métricas:** Coleta de latência, provedor utilizado, acurácia e ações executadas.
