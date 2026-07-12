@@ -3,7 +3,7 @@ from typing import Optional, List
 from pathlib import Path
 from datetime import datetime
 
-from ..esquemas.esquemas import ResultadoModeracao, ComentarioSaidaBanco, Acao, NivelDaOfensa
+from esquemas.esquemas import RespostaModeracao, ComentarioSaidaBanco, Acao, NivelDaOfensa
 
 
 class GerenciadorBancoDados:
@@ -31,20 +31,19 @@ class GerenciadorBancoDados:
             cursor.executescript(ddl_script)
             conexao.commit()
 
-    def inserir_comentario(self, texto: str, resultado: ResultadoModeracao) -> int:
+    def inserir_comentario(self, texto: str, resultado: RespostaModeracao) -> int:
         with self._conectar() as conexao:
             cursor = conexao.cursor()
             cursor.execute(
                 """INSERT INTO comentarios (
                     texto, eh_ofensivo, nivel_da_ofensa, eh_discurso_de_odio,
-                    confianca, justificativa, acao, modelo_de_llm, provedor_llm
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                    justificativa, acao, modelo_de_llm, provedor_llm
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
                 (
                     texto,
                     resultado.eh_ofensivo,
                     resultado.nivel_da_ofensa.value,
                     resultado.eh_discurso_de_odio,
-                    resultado.confianca,
                     resultado.justificativa,
                     resultado.acao.value,
                     resultado.modelo_de_llm,
@@ -81,7 +80,6 @@ class GerenciadorBancoDados:
                         eh_ofensivo=bool(row['eh_ofensivo']),
                         nivel_da_ofensa=NivelDaOfensa(row['nivel_da_ofensa']),
                         eh_discurso_de_odio=bool(row['eh_discurso_de_odio']),
-                        confianca=row['confianca'],
                         justificativa=row['justificativa'],
                         acao=Acao(row['acao']),
                         criado_em=datetime.fromisoformat(row['criado_em']) if row['criado_em'] else None,

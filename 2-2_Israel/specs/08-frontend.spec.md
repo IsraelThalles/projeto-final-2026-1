@@ -15,7 +15,6 @@ targets:
   - Indicador visual de ação (Verde = Aprovado, Amarelo = Sinalizado, Vermelho = Bloqueado).
   - Tags visuais para o Nível da Ofensa (leve, moderada, alta) e um alerta se for discurso de ódio.
   - Justificativa do agente (*rationale*) detalhando a decisão lógica.
-  - Confiança da classificação.
   - Horário da análise.
   - Botão para limpar o formulário.
 - Histórico em formato de lista/tabela exibindo as últimas validações do banco de dados.

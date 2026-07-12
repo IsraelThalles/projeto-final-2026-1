@@ -28,7 +28,6 @@ Todos os modelos Pydantic do sistema (entrada e saída) devem ser definidos excl
       "eh_ofensivo": boolean,
       "nivel_da_ofensa": "nenhuma | levemente | moderadamente | altamente",
       "eh_discurso_de_odio": boolean,
-      "confianca": float,
       "justificativa": "string",
       "acao": "Aprovar | Sinalizar | Bloquear"
     }
