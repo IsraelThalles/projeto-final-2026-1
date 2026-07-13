@@ -34,7 +34,7 @@ As tabelas devem ser salvas no arquivo `/2-2_Israel/codigo/banco/ddl.sql`
 ### Tabela `comentarios`
 
 ```sql
-CREATE TABLE comentarios (
+CREATE TABLE IF NOT EXISTS comentarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     texto TEXT NOT NULL,
     eh_ofensivo BOOLEAN NOT NULL,
