@@ -1,11 +1,13 @@
 import time
 import argparse
+from dotenv import load_dotenv
 import pandas as pd
 from pathlib import Path
 from sklearn.metrics import accuracy_score, f1_score, recall_score, confusion_matrix
 
 from codigo.agente import AgenteClassificador
 
+load_dotenv()
 
 class AvaliadorMetricas:
     def __init__(self, caminho_csv: str):
