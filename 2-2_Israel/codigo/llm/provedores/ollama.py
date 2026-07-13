@@ -10,6 +10,12 @@ class EstrategiaOllama(ProvedorLLM):
     def classificar_texto(self, texto: str, prompt_sistema: str) -> RespostaModeracao:
         url = os.getenv("OLLAMA_URL", "http://localhost:11434")
         modelo = os.getenv("MODELO_LLM", "qwen3:4b")
+
+        if not url:
+            raise ValueError("Configuração incorreta: A variável 'OLLAMA_URL' não foi encontrada no .env")
+        
+        if not modelo:
+            raise ValueError("Configuração incorreta: A variável 'MODELO_LLM' não foi encontrada no .env")
         
         payload = {
             "model": modelo,
