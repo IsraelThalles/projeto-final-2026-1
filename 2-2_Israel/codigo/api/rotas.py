@@ -4,12 +4,14 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from agente import AgenteClassificador
+    from banco import GerenciadorBancoDados
 
 
 
 class ControladorModeracao:
-    def __init__(self, agente: "AgenteClassificador"):
+    def __init__(self, agente: "AgenteClassificador", banco: "GerenciadorBancoDados"):
         self.agente = agente
+        self.banco = banco
         self.roteador = APIRouter()
         
         # Mapeia o método da classe para a rota POST de forma nativa no FastAPI
@@ -32,6 +34,9 @@ class ControladorModeracao:
         try:
             # Chama o orquestrador exatamente com a assinatura especificada
             resposta_validada = self.agente.moderar_comentario(comentario.texto)
+
+            self.banco.inserir_comentario(comentario.texto, resposta_validada)
+
             return resposta_validada
         except Exception as e:
             raise HTTPException(

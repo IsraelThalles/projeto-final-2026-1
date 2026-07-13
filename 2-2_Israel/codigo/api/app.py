@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from api import ControladorModeracao
 from agente import AgenteClassificador
+from banco import GerenciadorBancoDados
 
 
 
@@ -15,7 +16,8 @@ class AgenteModeracaoAPI:
         
         # 2. Instancia as dependências (Injeção)
         self.agente = AgenteClassificador()
-        self.controlador = ControladorModeracao(self.agente)
+        self.banco = GerenciadorBancoDados()
+        self.controlador = ControladorModeracao(self.agente, self.banco)
         
         # 3. Executa a configuração
         self._configurar_rotas()
