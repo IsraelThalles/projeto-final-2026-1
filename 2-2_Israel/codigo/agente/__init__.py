@@ -1,3 +1,3 @@
-from .agente_classificador import classificar_toxicidade
+from .agente_classificador import AgenteClassificador
 
-__all__ = ["classificar_toxicidade"]
+__all__ = ["AgenteClassificador"]
