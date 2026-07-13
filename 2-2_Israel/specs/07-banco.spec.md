@@ -4,7 +4,6 @@ description: Banco de dados SQLite para armazenar comentários analisados e resu
 targets:
   - /2-2_Israel/codigo/banco/banco.py
   - /2-2_Israel/codigo/banco/ddl.sql
-  - /2-2_Israel/codigo/esquemas/esquemas.py
 ---
 
 # Banco de Dados: SQLite
@@ -22,7 +21,7 @@ Criar uma classe usando o padrão de projeto *Singleton* em `/2-2_Israel/codigo/
 
 ## Regra de Arquitetura
 
-- **Modelos de Dados:** Crie ou utilize estritamente os contratos já definidos em `/2-2_Israel/codigo/esquemas/esquemas.py`.
+- **Modelos de Dados:** Utilize estritamente os contratos definidos em `esquemas.spec.md`.
 
 ## Tecnologia
 
