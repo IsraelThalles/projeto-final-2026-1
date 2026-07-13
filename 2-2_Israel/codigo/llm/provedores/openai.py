@@ -7,10 +7,14 @@ from esquemas import RespostaModeracao
 class EstrategiaOpenAI(ProvedorLLM):
     def classificar_texto(self, texto: str, prompt_sistema: str) -> RespostaModeracao:
         chave_api = os.getenv("CHAVE_DA_API")
+        tempo_limite = float(os.getenv("TEMPO_LIMITE_INFERENCIA") or 5)
 
         if not chave_api:
             raise ValueError("Configuração incorreta: A variável 'CHAVE_DA_API' não foi encontrada no .env")
         
+        if tempo_limite <= 0:
+            raise ValueError("Configuração incorreta: A variável 'TEMPO_LIMITE_INFERENCIA' deve ser um número positivo.")
+
         modelo_configurado = os.getenv("MODELO_LLM", "gpt-4o-mini")
         
         cliente = OpenAI(api_key=chave_api)

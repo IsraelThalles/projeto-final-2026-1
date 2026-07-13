@@ -23,6 +23,7 @@ A aplicação deve ser configurada pelo arquivo `.env`. As variáveis necessári
 - `OLLAMA_URL` (endereço do host, ex: `http://host.docker.internal:11434`);
 - `MODELO_LLM` (modelo a ser executado);
 - `CHAVE_DA_API` (opcional se `PROVEDOR_LLM=ollama`);
+- `TEMPO_LIMITE_INFERENCIA` (opcional - tempo máximo, em segundos, permitido para uma inferência antes do acionamento do fallback).
 - Caminho do banco SQLite e portas de exposição (*Frontend* e API).
 
 ## Passos de Deploy

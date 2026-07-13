@@ -9,7 +9,10 @@ class AgenteClassificador:
 
     def __init__(self):
         self._prompt_sistema = self._ler_prompt_sistema()
-
+        self._tempo_limite = float(os.getenv("TEMPO_LIMITE_INFERENCIA") or 5)
+        
+        if self._tempo_limite <= 0:
+            raise ValueError("Configuração incorreta: A variável 'TEMPO_LIMITE_INFERENCIA' deve ser um número positivo.")
 
 
     def _ler_prompt_sistema(self) -> str:
@@ -38,17 +41,17 @@ class AgenteClassificador:
 
 
     def moderar_comentario(self, texto: str) -> RespostaModeracao:
-        """Orquestra a classificação e impõe o Guardrail de Timeout (5s)."""
+        """Orquestra a classificação e impõe o Guardrail de Timeout."""
         try:
             provedor = FabricaProvedorLLM.obter_provedor()
             
             with ThreadPoolExecutor(max_workers=1) as executor:
                 futuro = executor.submit(provedor.classificar_texto, texto, self._prompt_sistema)
-                resultado = futuro.result(timeout=5.0)
+                resultado = futuro.result(timeout=self._tempo_limite)
                 
             return resultado
             
         except TimeoutError:
-            return self._gerar_fallback_erro("Indisponibilidade técnica: Timeout de 5 segundos excedido.")
+            return self._gerar_fallback_erro(f"Indisponibilidade técnica: tempo limite de {self._tempo_limite} segundos excedido.")
         except Exception as erro:
             return self._gerar_fallback_erro(f"Indisponibilidade técnica: {str(erro)}")

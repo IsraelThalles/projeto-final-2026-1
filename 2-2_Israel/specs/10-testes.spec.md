@@ -17,7 +17,7 @@ targets:
 
 - ≥ 80% de cobertura de código para `/2-2_Israel/codigo/agente/` e `/2-2_Israel/codigo/api/`.
 - Testes para casos de borda: ironia leve, falsos positivos comuns e tentativas de injeção de *prompt*.
-- Testes de limite de tempo (*timeout*) para verificar se o *fallback* de 5 segundos está sendo acionado corretamente.
+- Testes de limite de tempo (*timeout*) para verificar se o *fallback* é acionado corretamente quando a inferência excede o tempo limite configurado.
 
 [@test]: /2-2_Israel/testes/teste_agente.py
 [@test]: /2-2_Israel/testes/teste_classificador.py

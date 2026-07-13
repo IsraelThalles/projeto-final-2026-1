@@ -42,7 +42,7 @@ A URL da API deve ser obtida da variável de ambiente `API_URL`, utilizando `htt
 ```
 
 - Após uma classificação realizada com sucesso, a interface deve atualizar automaticamente a tabela de histórico.
-- **Tratamento de Erros:** Exibir `st.error()` com uma mensagem amigável caso ocorra *timeout* (mais de 5 segundos) ou a API esteja indisponível.
+- **Tratamento de Erros:** Exibir `st.error()` com uma mensagem amigável caso a requisição exceda o tempo limite configurado para inferência ou a API esteja indisponível.
 
 ### 3. Painel de Resultados (Card de Resposta)
 

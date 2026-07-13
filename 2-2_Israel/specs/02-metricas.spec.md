@@ -19,7 +19,7 @@ targets:
 
 - MT05: Latência mediana (p50) inferior a 1,5 s por requisição ao agente.
 - MT06: Latência de cauda (p95) inferior a 3 s.
-- MT07: *Timeout* de segurança da API acionado rigorosamente aos 5 s para qualquer provedor.
+- MT07: O *timeout* de segurança deve ser acionado rigorosamente após o tempo configurado para inferência (`TEMPO_LIMITE_INFERENCIA`), garantindo o acionamento do *fallback* quando esse limite for excedido.
 
 ## Qualidade da API e Rastreabilidade
 
