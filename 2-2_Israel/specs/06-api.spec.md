@@ -22,7 +22,7 @@ Este arquivo deve conter exclusivamente a classe `ControladorModeracao` da API.
 
 A classe deve:
 
-- Receber uma instância da classe `AgenteClassificador`.
+- Receber uma instância da classe `AgenteClassificador` e da classe `GerenciadorBancoDados`.
 - Configurar um `APIRouter` do FastAPI.
 - Retornar a instância do roteador contendo as rotas registradas, por meio do método `obter_roteador(self) -> APIRouter`.
 - Expor o método `moderar(self, comentario: ComentarioEntrada) -> RespostaModeracao` mapeado para a rota `POST`.
@@ -38,7 +38,8 @@ A classe deve:
 
 - Utilizar o padrão *Application Factory* (Fábrica de Aplicação).
 - Instanciar da classe `AgenteClassificador` (especificada em `agente_classificador.spec.md`).
-- Instanciar o `ControladorModeracao`, passando a instância do `AgenteClassificador`.
+- Instanciar da classe `GerenciadorBancoDados` (especificada em `banco.spec.md`).
+- Instanciar o `ControladorModeracao`, passando a instância do `AgenteClassificador` e do `GerenciadorBancoDados`.
 - Configurar as rotas, por meio do método `_configurar_rotas(self)`.
 - Exportar a variável app para o `Uvicorn`, usando o método `obter_app(self) -> FastAPI:`
 
