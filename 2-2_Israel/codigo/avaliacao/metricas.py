@@ -43,7 +43,7 @@ class AvaliadorMetricas:
         print("=" * 70)
 
         # Inferência em Lote
-        for index, row in df_lote.iterrows():
+        for _, row in df_lote.iterrows():
             texto = row['comment']
             print(f"[{len(y_pred) + 1}/{total}] Analisando comentário...")
             
@@ -61,9 +61,9 @@ class AvaliadorMetricas:
                 time.sleep(atraso_segundos)
 
         # Cálculo de Métricas (scikit-learn)
-        self._gerar_relatorio(y_true, y_pred, total)
+        self._gerar_relatorio(y_true, y_pred)
 
-    def _gerar_relatorio(self, y_true: list, y_pred: list, total: int):
+    def _gerar_relatorio(self, y_true: list, y_pred: list):
         """
         Extrai a matriz de confusão e compara os resultados com os limiares de negócio.
         """
@@ -77,6 +77,9 @@ class AvaliadorMetricas:
         taxa_fp = fp / (fp + tn) if (fp + tn) > 0 else 0.0
 
         # Formatação do Relatório
+        self._imprimir_relatorio(acuracia, f1, recall, tn, fp, fn, tp, taxa_fp)
+
+    def _imprimir_relatorio(self, acuracia, f1, recall, tn, fp, fn, tp, taxa_fp):
         print("\n📊 RELATÓRIO DE DESEMPENHO DO MODELO")
         print("=" * 70)
         
