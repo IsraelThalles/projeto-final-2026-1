@@ -1,7 +1,7 @@
 import os
 import json
 from openai import OpenAI
-from cliente import ProvedorLLM
+from llm import ProvedorLLM
 from esquemas import RespostaModeracao
 
 class EstrategiaOpenAI(ProvedorLLM):

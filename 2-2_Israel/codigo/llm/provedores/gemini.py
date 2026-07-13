@@ -1,7 +1,7 @@
 import os
 import json
 import google.generativeai as genai
-from cliente import ProvedorLLM
+from llm import ProvedorLLM
 from esquemas import RespostaModeracao
 
 class EstrategiaGemini(ProvedorLLM):

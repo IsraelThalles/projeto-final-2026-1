@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-from cliente import ProvedorLLM
-from provedores import EstrategiaOllama, EstrategiaGemini, EstrategiaOpenAI
+from llm import ProvedorLLM
+from .provedores import EstrategiaOllama, EstrategiaGemini, EstrategiaOpenAI
 
 load_dotenv()
 

@@ -1,7 +1,7 @@
 import os
 import requests
 import json
-from cliente import ProvedorLLM
+from llm import ProvedorLLM
 from esquemas import RespostaModeracao
 
 
