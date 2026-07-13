@@ -36,7 +36,7 @@ Arquivo de texto estático que o agente Python deverá ler em tempo de execuçã
 
 > Arquivo: `/2-2_Israel/codigo/llm/cliente.py`
 
-Deve conter apenas a classe abstrata/interface `ProvedorLLM` que define o contrato base (método de classificação) para todos os modelos.
+Deve conter apenas a classe abstrata/interface `ProvedorLLM` que define o contrato base (método de classificação `classificar_texto(self, texto: str, prompt_sistema: str) -> RespostaModeracao`) para todos os modelos.
 
 ### 3. Implementações Concretas
 
@@ -46,13 +46,13 @@ Deve conter apenas a classe abstrata/interface `ProvedorLLM` que define o contra
 - `gemini.py`: Implementa a classe `EstratégiaGemini`.
 - `ollama.py`: Implementa a classe `EstratégiaOllama`.
 
-*Regra:* Todas as implementações devem retornar exatamente a estrutura definida pelo esquema de resposta do sistema em `codigo/esquemas/esquemas.py` e devem possuir tratamento de erro para cofiguração ausente ou incorreta do `.env`.
+*Regra:* Todas as implementações devem retornar exatamente a estrutura definida pelo esquema de resposta do sistema em `esquemas.spec.md` e devem possuir tratamento de erro para cofiguração ausente ou incorreta do `.env`.
 
 ### 4. Fábrica
 
 > Arquivo: `/2-2_Israel/codigo/llm/fabrica.py`
 
-Deve conter a `FábricaProvedorLLM`, responsável por ler o arquivo `.env` e instanciar dinamicamente a estratégia correta.
+Deve conter a `FábricaProvedorLLM`, responsável por ler o arquivo `.env` e instanciar dinamicamente a estratégia correta (usando o método `obter_provedor() -> ProvedorLLM`).
 A fábrica não deve conter lógica de comunicação com APIs nem construção de prompts.
 Sua única responsabilidade é selecionar e instanciar o provedor apropriado.
 
@@ -60,10 +60,16 @@ Sua única responsabilidade é selecionar e instanciar o provedor apropriado.
 
 > Arquivo: `/2-2_Israel/codigo/agente/agente_classificador.py`
 
-O orquestrador do sistema. Ele deve:
-1. Ler o conteúdo de `prompt_sistema.md`.
-2. Instanciar o modelo via Fábrica.
-3. Executar a chamada de classificação com o *Guardrail* de *Fallback* (se exceder 5 segundos ou falhar, deve retornar ação "Sinalizar" com justificativa de erro técnico).
+Este arquivo deve conter exclusivamente a classe `AgenteClassificador`, responsável por orquestrar o processo de moderação.
+
+A classe deve:
+
+1. Carregar o conteúdo de `prompt_sistema.md` na inicialização (por meio do método `_ler_prompt_sistema(self) -> str`).
+2. Receber uma instância de `ProvedorLLM` (obtida pela `FabricaProvedorLLM`).
+3. Solicitar a classificação ao provedor de LLM, por meio do método `moderar_comentario(self, texto: str) -> RespostaModeracao`, passando o prompt e o comentário.
+4. Aplicar as regras do *Guardrail* de *Fallback* quando necessário (se exceder 5 segundos ou falhar, deve retornar ação "Sinalizar" com justificativa de erro técnico).
+5. Validar a resposta utilizando os esquemas definidos em `esquemas.spec.md`.
+
 
 O agente principal não deve conhecer detalhes dos provedores.
 
