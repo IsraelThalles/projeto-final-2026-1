@@ -3,7 +3,7 @@ from typing import Optional, List
 from pathlib import Path
 from datetime import datetime
 
-from esquemas.esquemas import RespostaModeracao, ComentarioSaidaBanco, Acao, NivelDaOfensa
+from esquemas import RespostaModeracao, ComentarioSaidaBanco, Acao, NivelDaOfensa
 
 
 class GerenciadorBancoDados:
