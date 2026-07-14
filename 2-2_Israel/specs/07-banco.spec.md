@@ -53,3 +53,5 @@ CREATE TABLE IF NOT EXISTS comentarios (
 - **Inserção:** Salvar o payload completo gerado pelo agente na API.
 
 - **Consulta:** Listar histórico com filtros por eh_ofensivo ou tipo de acao para alimentar o dashboard.
+
+[@test]: /2-2_Israel/testes/teste_banco.py
