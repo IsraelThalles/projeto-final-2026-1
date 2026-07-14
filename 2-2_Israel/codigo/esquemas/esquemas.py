@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional
 from datetime import datetime
 from enum import Enum
@@ -19,6 +19,13 @@ class Acao(str, Enum):
 
 class ComentarioEntrada(BaseModel):
     texto: str = Field(..., description="O texto do comentário a ser moderado")
+
+    @field_validator("texto")
+    @classmethod
+    def validar_texto(cls, valor: str) -> str:
+        if not valor.strip():
+            raise ValueError("O comentário não pode ser vazio.")
+        return valor
 
 
 class RespostaModeracao(BaseModel):
