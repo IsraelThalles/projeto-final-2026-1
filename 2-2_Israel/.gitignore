@@ -4,3 +4,7 @@
 .tessl
 .vscode/
 .env
+__pycache__/
+moderacao.db
+.coverage
+.pytest_cache/
