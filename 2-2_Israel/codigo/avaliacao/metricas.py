@@ -5,7 +5,7 @@ import pandas as pd
 from pathlib import Path
 from sklearn.metrics import accuracy_score, f1_score, recall_score, confusion_matrix
 
-from codigo.agente import AgenteClassificador
+from agente import AgenteClassificador
 
 load_dotenv()
 
