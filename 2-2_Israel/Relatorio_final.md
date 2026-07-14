@@ -35,7 +35,7 @@ O projeto visa resolver a proliferação de toxicidade e discurso de ódio em pl
 * **UX:** O painel em Streamlit é responsivo e claro. O usuário recebe feedback visual imediato (cores semânticas: verde para aprovar, amarelo para sinalizar, vermelho para bloquear) e alertas de erro amigáveis caso ocorram problemas de rede.
 
 ## Demonstração
-
+<img width="1366" height="768" alt="Capturar_20260714001256" src="https://github.com/user-attachments/assets/30e1332a-e8bf-4a03-96f3-b9506d1faed8" />
 
 ## Reflexão sobre o que aprenderam
 O grande aprendizado técnico e metodológico residiu no uso do **Spec-Driven Development (SDD)** utilizando o framework Tessl. A dinâmica de criar especificações, iterar e gerar lotes de código trouxe percepções valiosas:
