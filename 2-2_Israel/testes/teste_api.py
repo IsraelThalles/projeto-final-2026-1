@@ -105,3 +105,24 @@ def test_get_historico_retorna_lista_no_contrato(dependencias_api):
         }
     ]
     banco.listar_historico.assert_called_once_with()
+
+
+def test_post_moderar_retorna_erro_interno_quando_agente_falha(dependencias_api):
+    cliente, agente, banco = dependencias_api
+    agente.moderar_comentario.side_effect = RuntimeError("falha do provedor")
+
+    resposta = cliente.post("/moderar", json={"texto": "Comentário válido"})
+
+    assert resposta.status_code == 500
+    assert "falha do provedor" in resposta.json()["detail"]
+    banco.inserir_comentario.assert_not_called()
+
+
+def test_get_historico_retorna_erro_interno_quando_banco_falha(dependencias_api):
+    cliente, _, banco = dependencias_api
+    banco.listar_historico.side_effect = RuntimeError("banco indisponível")
+
+    resposta = cliente.get("/historico")
+
+    assert resposta.status_code == 500
+    assert "banco indisponível" in resposta.json()["detail"]

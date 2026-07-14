@@ -114,3 +114,11 @@ def test_agente_aplica_fallback_quando_inferencia_excede_tempo_limite(monkeypatc
 
     assert resultado.acao is Acao.sinalizar
     assert "tempo limite de 0.01 segundos excedido" in resultado.justificativa
+
+
+@pytest.mark.parametrize("tempo", ["0", "-1"])
+def test_agente_rejeita_tempo_limite_nao_positivo(monkeypatch, tempo):
+    monkeypatch.setenv("TEMPO_LIMITE_INFERENCIA", tempo)
+
+    with pytest.raises(ValueError, match="deve ser um número positivo"):
+        AgenteClassificador()
