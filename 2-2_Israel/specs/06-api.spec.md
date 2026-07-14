@@ -91,4 +91,4 @@ Retorna a lista dos comentários previamente analisados, ordenados do mais recen
 
 A resposta deve utilizar exclusivamente o esquema `ComentarioSaidaBanco` definido em `esquemas.spec.md`. Não é permitido criar um esquema específico para este endpoint.
 
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40
+[@test]: /2-2_Israel/testes/teste_api.py
