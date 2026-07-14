@@ -1,6 +1,7 @@
 import os
 import json
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from llm import ProvedorLLM
 from esquemas import RespostaModeracao
 
@@ -13,15 +14,19 @@ class EstrategiaGemini(ProvedorLLM):
         
         modelo_configurado = os.getenv("MODELO_LLM", "gemini-2.5-flash")
         
-        genai.configure(api_key=chave_api) # type: ignore
-        modelo = genai.GenerativeModel(modelo_configurado, system_instruction=prompt_sistema) # type: ignore
-        
-        resposta = modelo.generate_content(
-            texto,
-            generation_config=genai.GenerationConfig( # type: ignore
-                response_mime_type="application/json"
-            )
+        cliente = genai.Client(api_key=chave_api)
+
+        resposta = cliente.models.generate_content(
+            model=modelo_configurado,
+            contents=texto,
+            config=types.GenerateContentConfig(
+                system_instruction=prompt_sistema,
+                response_mime_type="application/json",
+            ),
         )
-        
+
+        if resposta.text is None:
+            raise RuntimeError("O Gemini não retornou conteúdo textual.")
+
         conteudo = json.loads(resposta.text)
         return RespostaModeracao(**conteudo)
