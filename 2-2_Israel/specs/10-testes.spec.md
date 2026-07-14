@@ -3,8 +3,10 @@ name: testes
 description: Estratégia de testes automatizados (unitários, de integração e E2E) para garantir a estabilidade do sistema.
 targets:
   - /2-2_Israel/testes/teste_fabrica.py
+  - /2-2_Israel/testes/teste_provedores.py
   - /2-2_Israel/testes/teste_agente.py
   - /2-2_Israel/testes/teste_api.py
+  - /2-2_Israel/testes/teste_banco.py
 ---
 
 # Estratégia de Testes
@@ -36,6 +38,16 @@ targets:
 - Validar se a `FabricaProvedorLLM` retorna a implementação correta quando `PROVEDOR_LLM` for configurado como `openai`, `gemini` ou `ollama`.
 - Validar se uma exceção (`ValueError`) é lançada quando um provedor desconhecido for informado.
 - Validar se uma exceção apropriada é lançada quando a configuração obrigatória do provedor estiver ausente ou inválida.
+
+#### Unitários: `teste_provedores.py`
+
+- Mockar os clientes OpenAI, Gemini e Ollama para validar a conversão de respostas JSON em `RespostaModeracao`, sem realizar requisições de rede.
+- Validar os erros de configuração obrigatória e de resposta vazia ou inválida de cada provedor.
+
+#### Integração: `teste_banco.py`
+
+- Configurar o `GerenciadorBancoDados` com um arquivo SQLite temporário por teste.
+- Validar inserção, listagem e filtros por `eh_ofensivo` e `acao`, sem usar o banco da aplicação.
 
 #### Integração: `teste_agente.py`
 
