@@ -68,16 +68,15 @@ def test_openai_rejeita_resposta_vazia(monkeypatch):
 
 def test_gemini_converte_resposta_json_sem_chamada_real(monkeypatch):
     monkeypatch.setenv("CHAVE_DA_API", "chave-de-teste")
-    modelo = Mock()
-    modelo.generate_content.return_value = Mock(text=resposta_json())
+    cliente = Mock()
+    cliente.models.generate_content.return_value = Mock(text=resposta_json())
 
-    with patch("llm.provedores.gemini.genai") as genai:
-        genai.GenerativeModel.return_value = modelo
+    with patch("llm.provedores.gemini.genai.Client", return_value=cliente) as classe_cliente:
         resultado = EstrategiaGemini().classificar_texto("Comentário", "Prompt")
 
     assert resultado.acao is Acao.aprovar
-    genai.configure.assert_called_once_with(api_key="chave-de-teste")
-    modelo.generate_content.assert_called_once()
+    classe_cliente.assert_called_once_with(api_key="chave-de-teste")
+    cliente.models.generate_content.assert_called_once()
 
 
 def test_gemini_rejeita_chave_ausente(monkeypatch):
