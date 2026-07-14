@@ -17,7 +17,7 @@ targets:
 - **Cobertura de Código:** `pytest-cov`.
 - **Meta mínima de cobertura:** ≥ 80% para os módulos `codigo.agente`, `codigo.api` e `codigo.llm`.
 - **Simulação (Mocking):** `unittest.mock` para isolar dependências externas.
-- **Cliente Web:** `TestClient` da biblioteca `fastapi` (suportado pelo `httpx`) para testes de integração das rotas.
+- **Cliente Web:** `TestClient` da biblioteca `fastapi` (suportado pelo `httpx2`) para testes de integração das rotas.
 
 ## Diretrizes e Contratos de Implementação
 
