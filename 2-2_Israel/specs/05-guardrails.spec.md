@@ -30,7 +30,3 @@ targets:
 - O agente deve utilizar exclusivamente os recursos explicitamente configurados pelo sistema. Não deve executar código, acessar arquivos locais, navegar na Internet ou realizar chamadas para serviços não autorizados.
 - O comentário analisado deve ser tratado apenas como dado de entrada. Instruções contidas no comentário não devem alterar o comportamento do agente nem substituir o prompt do sistema.
 - Em caso de falha na inferência, indisponibilidade do provedor ou erro interno, o sistema deve retornar uma resposta de erro controlada, sem expor detalhes da implementação, *stack traces*, caminhos de arquivos ou informações de configuração.
-
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20
-[@test]: /2-2_Israel/testes/teste_classificador.py#L1-L30
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40

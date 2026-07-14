@@ -39,6 +39,3 @@ A aplicação deve ser configurada pelo arquivo `.env`. As variáveis necessári
 - O banco SQLite deve ser gerado automaticamente na primeira execução caso não exista.
 - A aplicação deve subir independentemente da disponibilidade imediata do LLM, falhando de forma graciosa (*fallback*) apenas no momento da inferência caso o provedor selecionado esteja inacessível.
 - Logs estruturados no console contendo latência, provedor utilizado (`modelo_de_llm`), requisição e *timeout*.
-
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20

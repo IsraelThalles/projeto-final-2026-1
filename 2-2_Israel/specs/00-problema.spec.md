@@ -27,6 +27,3 @@ Construir um agente de IA (baseado no *dataset* HateBRXplain) que atue como um "
 - O sistema destina-se exclusivamente à análise de comentários escritos em português.
 - A detecção foca em uma classificação binária: Ofensivo vs. Não Ofensivo.
 - O sistema não realiza bloqueios automáticos irrevogáveis; a decisão final e a auditoria permanecem com o moderador humano.
-
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20
-[@test]: /2-2_Israel/testes/teste_classificador.py#L1-L30

@@ -78,5 +78,3 @@ Exibir a justificativa retornada pelo agente utilizando `st.info()`.
   - Nível da Ofensa;
   - Discurso de Ódio;
   - Ação.
-
-[@test]: /2-2_Israel/testes/teste_api.py#L41-L60

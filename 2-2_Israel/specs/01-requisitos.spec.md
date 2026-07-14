@@ -23,7 +23,3 @@ targets:
 - RNF03: *Rate limiting* de 30 requisições por minuto na API para evitar sobrecarga.
 - RNF04: Logs estruturados contendo o texto de entrada, a classificação, a latência e a ação sugerida.
 - RNF05: Tratamento de tempo limite excedido configurado para estourar rigorosamente em 5 segundos, independente do provedor de LLM utilizado (degradação graciosa).
-
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20
-[@test]: /2-2_Israel/testes/teste_classificador.py#L1-L30
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40

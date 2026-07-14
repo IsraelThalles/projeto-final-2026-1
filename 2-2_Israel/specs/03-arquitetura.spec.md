@@ -24,6 +24,3 @@ targets:
 5. Agente retorna classificação binária + nível inferido + justificatva + ação.
 6. API salva o resultado no banco, loga a interação e retorna a resposta.
 7. Frontend exibe resultado e atualiza o histórico.
-
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20

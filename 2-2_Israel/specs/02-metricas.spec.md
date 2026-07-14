@@ -91,7 +91,3 @@ Ao final da execução, o script deve imprimir um relatório contendo:
   - Falsos Negativos;
 - Valor obtido para MT01, MT02, MT03 e MT04;
 - Indicação visual (✅ ou ❌) informando se cada métrica atingiu o limite estabelecido na especificação.
-
-[@test]: /2-2_Israel/testes/teste_classificador.py#L1-L30
-[@test]: /2-2_Israel/testes/teste_agente.py#L1-L20
-[@test]: /2-2_Israel/testes/teste_api.py#L1-L40
