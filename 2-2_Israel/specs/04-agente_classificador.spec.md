@@ -48,6 +48,8 @@ Deve conter apenas a classe abstrata/interface `ProvedorLLM` que define o contra
 
 *Regra:* Todas as implementações devem retornar exatamente a estrutura definida pelo esquema de resposta do sistema em `esquemas.spec.md` e devem possuir tratamento de erro para cofiguração ausente ou incorreta do `.env`.
 
+*Dependência Gemini:* A estratégia Gemini deve utilizar o SDK suportado `google-genai`, instanciando `genai.Client` com `CHAVE_DA_API`. Não deve utilizar o pacote legado `google-generativeai`.
+
 ### 4. Fábrica
 
 > Arquivo: `/2-2_Israel/codigo/llm/fabrica.py`
@@ -168,5 +170,7 @@ Não invente contexto externo.
 
 ---
 
-[@test]: /2-2_Israel/testes/teste_agente.py#L21-L50
-[@test]: /2-2_Israel/testes/teste_classificador.py#L31-L60
+[@test]: /2-2_Israel/testes/teste_agente.py
+[@test]: /2-2_Israel/testes/teste_fabrica.py
+[@test]: /2-2_Israel/testes/teste_provedores.py
+
